@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import type { TechType } from '../../Type/Type';
 import { CiStar } from 'react-icons/ci';
+import { Bounce, toast } from 'react-toastify';
 interface TechProf {
     tech: TechType;
     selectedTech: TechType[];
@@ -12,9 +12,20 @@ const TechCard = ({ tech, selectedTech, setSelectedTech}: TechProf) => {
     
 const isSelected = selectedTech.some((selected) => selected.id === tech.id);
 
-    const handleAddToStack = (tec: TechType) => {
-        selectedTech=[...selectedTech, tec];
+    const handleAddToStack = (tech: TechType) => {
+        selectedTech=[...selectedTech, tech];
         setSelectedTech(() => selectedTech);
+        toast.success(`${tech.name} added to your stack!`, {
+position: "bottom-right",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light",
+transition: Bounce,
+});
     
     };
 
@@ -37,7 +48,7 @@ const isSelected = selectedTech.some((selected) => selected.id === tech.id);
                 <button className="text-xs bg-black text-white py-2 w-full mx-3 rounded-xl my-3" 
                 onClick={() => handleAddToStack(tech)} 
                 disabled={isSelected}>
-                {isSelected ? "Added" : "Add to Stack"}
+                {isSelected ? "✓ Added to Stack" : "Add to Stack"}
             </button>
             </div>
         </div>
