@@ -1,10 +1,13 @@
-import { use } from 'react';
+import { use, useState } from 'react';
 import type { TechType } from '../../Type/Type';
 import TechCard from './TechCard';
+import SelectedTech from './SelectedTech';
 
 const Technologies = ({ techPromise }: { techPromise:Promise<TechType[]> }) => {
      
     const technologies = use(techPromise);
+    const [selectedTech, setSelectedTech] = useState<TechType[]>([]);
+
     return (
         <div className="container mx-auto mt-4 flex flex-col gap-3">
             <h2 className='text-3xl font-bold'>Explore the <span className='bg-linear-to-r from-[#D81B7E] to-[#8B5CF6] bg-clip-text text-transparent'>Technologies</span></h2>
@@ -12,11 +15,24 @@ const Technologies = ({ techPromise }: { techPromise:Promise<TechType[]> }) => {
             <div className='grid grid-cols-4 gap-4 mt-4'>
                <div className='col-span-3 grid grid-cols-3 gap-4'>
                  {technologies.map(tech => (
-                <TechCard key={tech.id} tech={tech}></TechCard>
+                <TechCard key={tech.id} tech={tech} 
+                selectedTech={selectedTech} setSelectedTech={setSelectedTech} ></TechCard>
             ))}
                </div>
                <div>
-                <h2>Your Stack</h2>
+                <div className='border border-[#E5E7EB] rounded-2xl w-full'>
+                <h2 className='font-bold mt-3 mx-4'>Your Stack</h2>
+                <p className='mx-4 text-[#94A3B8] text-xs'>{selectedTech.length} Technology Selected</p>
+                <div>
+                    {selectedTech.map((tech, index) => (
+                        <SelectedTech key={index} tech={tech}></SelectedTech> 
+                    ))}
+                </div>
+                <div className='flex items-center justify-center p-2'>
+                <button className="btn btn-outline btn-error w-full rounded-xl mx-2.5" onClick={() => setSelectedTech([])}>Remove All</button>
+            </div>
+
+               </div>
                </div>
             </div>
         </div>

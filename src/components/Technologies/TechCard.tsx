@@ -1,9 +1,23 @@
-import React from 'react';
+import { useState } from 'react';
 import type { TechType } from '../../Type/Type';
-import { FaRegStar } from 'react-icons/fa6';
 import { CiStar } from 'react-icons/ci';
+interface TechProf {
+    tech: TechType;
+    selectedTech: TechType[];
+    setSelectedTech: React.Dispatch<React.SetStateAction<TechType[]>>;
+}
 
-const TechCard = ({ tech }: { tech: TechType }) => {
+const TechCard = ({ tech, selectedTech, setSelectedTech}: TechProf) => {
+
+    
+const isSelected = selectedTech.some((selected) => selected.id === tech.id);
+
+    const handleAddToStack = (tec: TechType) => {
+        selectedTech=[...selectedTech, tec];
+        setSelectedTech(() => selectedTech);
+    
+    };
+
     return (
         <div className='border border-[#E5E7EB] rounded-2xl'>
             <div className='flex items-center justify-between m-3 p-3'>
@@ -20,8 +34,10 @@ const TechCard = ({ tech }: { tech: TechType }) => {
                 <h2 className='flex items-center'><CiStar/>{tech.rating}</h2>
             </div>
             <div className='flex items-center justify-center p-2'>
-                <button className="bg-black text-white py-2 w-full mx-3 rounded-xl m-3">
-                Add to Stack
+                <button className="text-xs bg-black text-white py-2 w-full mx-3 rounded-xl my-3" 
+                onClick={() => handleAddToStack(tech)} 
+                disabled={isSelected}>
+                {isSelected ? "Added" : "Add to Stack"}
             </button>
             </div>
         </div>
