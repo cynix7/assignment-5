@@ -1,6 +1,6 @@
-import React from 'react';
 import { use } from 'react';
 import type { TechType } from '../../Type/Type';
+import TechCard from './TechCard';
 
 const Technologies = ({ techPromise }: { techPromise:Promise<TechType[]> }) => {
      
@@ -12,9 +12,7 @@ const Technologies = ({ techPromise }: { techPromise:Promise<TechType[]> }) => {
             <div className='grid grid-cols-4 gap-4 mt-4'>
                <div className='col-span-3 grid grid-cols-3 gap-4'>
                  {technologies.map(tech => (
-                <h2 key={tech.id}>
-                    {tech.name}    
-                </h2>
+                <TechCard key={tech.id} tech={tech}></TechCard>
             ))}
                </div>
                <div>
