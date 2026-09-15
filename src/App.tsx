@@ -3,6 +3,7 @@ import Banner from "./components/Banner"
 import Nav from "./components/Nav"
 import Technologies from "./components/Technologies/Technologies";
 import type { TechType } from "./Type/Type";
+import Footer from "./components/Footer";
 
 
 const techPromise = async (): Promise<TechType[]> => {
@@ -19,6 +20,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Technologies techPromise={techPromise()}></Technologies>
       </Suspense>
+      <Footer></Footer>
     </>
   )
 }

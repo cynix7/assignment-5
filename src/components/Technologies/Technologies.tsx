@@ -13,7 +13,7 @@ const Technologies = ({ techPromise }: { techPromise:Promise<TechType[]> }) => {
             <h2 className='text-3xl font-bold'>Explore the <span className='bg-linear-to-r from-[#D81B7E] to-[#8B5CF6] bg-clip-text text-transparent'>Technologies</span></h2>
             <p className='text-sm text-gray-600'>Pick one technology per category to build your ideal stack.</p>
             <div className='grid grid-cols-4 gap-4 mt-4'>
-               <div className='col-span-3 grid grid-cols-3 gap-4'>
+               <div className='col-span-3 grid grid-cols-3 gap-4 mb-12 pb-4'>
                  {technologies.map(tech => (
                 <TechCard key={tech.id} tech={tech} 
                 selectedTech={selectedTech} setSelectedTech={setSelectedTech} ></TechCard>
