@@ -1,23 +1,27 @@
+import { RxHamburgerMenu } from 'react-icons/rx';
 import Logo from '../assets/logo-text.png';
 console.log(Logo);
 
 const Nav = () => {
      
     return (
-        <div className="flex justify-between container mx-auto my-10">
+        <nav className="sticky top-0 z-50 bg-white">
+            <div className="flex justify-between container mx-auto my-10 py-2.5">
+                <h2 className="sm:hidden"><RxHamburgerMenu /></h2>
             <img src={Logo} alt="Logo" />
-            <ul className="flex gap-4 items-center">
-                <li className="text-pink-600">Home</li>
-                <li className="text-slate-600">Technologies</li>
-                <li className="text-slate-600">Projects</li>
-                <li className="text-slate-600">About</li>
-                <li className="text-slate-600 ">Contact</li>
+            <ul className="hidden sm:flex gap-4 items-center">
+                <li className="text-pink-600"><a href="">Home</a></li>
+                <li className="text-slate-600"><a href="">Technologies</a></li>
+                <li className="text-slate-600"><a href="">Projects</a></li>
+                <li className="text-slate-600"><a href="">About</a></li>
+                <li className="text-slate-600 "><a href="">Contact</a></li>
             </ul>
             <div className="flex gap-4">
-                <button>Sign In</button>
+                <button className="cursor-pointer">Sign In</button>
                 <button className="btn btn-active btn-secondary rounded-2xl">Sign Up</button>
             </div>
         </div>
+        </nav>
     );
 };
 

@@ -30,7 +30,7 @@ transition: Bounce,
     };
 
     return (
-        <div className='border border-[#E5E7EB] rounded-2xl'>
+        <div className={isSelected ? "border-2 border-pink-500 rounded-2xl" : "border border-[#E5E7EB] rounded-2xl" }>
             <div className='flex items-center justify-between m-3 p-3'>
                 <img src={tech.icon} alt={tech.name} className='w-12 h-12' />
                 <h2 className='badge badge-soft badge-info rounded-4xl'>{tech.badge}</h2>
@@ -45,9 +45,9 @@ transition: Bounce,
                 <h2 className='flex items-center'><CiStar/>{tech.rating}</h2>
             </div>
             <div className='flex items-center justify-center p-2'>
-                <button className="text-xs bg-black text-white py-2 w-full mx-3 rounded-xl my-3" 
-                onClick={() => handleAddToStack(tech)} 
-                disabled={isSelected}>
+                <button onClick={() => handleAddToStack(tech)} 
+                disabled={isSelected}
+                className={isSelected ? "text-xs bg-pink-100 text-pink-500 py-2 w-full mx-3 rounded-xl my-3 cursor-not-allowed" :"text-xs bg-black text-white py-2 w-full mx-3 rounded-xl my-3 cursor-pointer hover:bg-[#3c485b]" }>
                 {isSelected ? "✓ Added to Stack" : "Add to Stack"}
             </button>
             </div>

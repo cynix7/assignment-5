@@ -4,8 +4,8 @@ const Footer = () => {
     return (
         <div>
             <hr className='text-[#E5E7EB]' />
-        <div className='grid grid-cols-5 gap-4 p-4 border-b border-[#E5E7EB] mt-4 container mx-auto'>
-            <div className='col-span-2'>
+        <div className='grid grid-cols-1 sm:grid-cols-5 gap-4 p-4 border-b border-[#E5E7EB] mt-4 container mx-auto'>
+            <div className='sm:col-span-2 items-center flex flex-col sm:items-start'>
                 <img className='mb-3 pb-1' src={Logo} alt="Logo" />
                 <p className='text-xs text-[#64748B] mb-4'>Curated tools, technologies, and resources for developers building
                     modern software.</p>
@@ -15,7 +15,7 @@ const Footer = () => {
                     <li><a href="#">LinkedIn</a></li>
                 </ul>
             </div>
-            <div>
+            <div className='hidden sm:block'>
                 <h2 className='font-bold text-sm mb-2'>PRODUCT</h2>
                 <ul className='text-xs text-[#64748B] gap-2 flex flex-col'>
                     <li><a href="#">Home</a></li>
@@ -23,7 +23,7 @@ const Footer = () => {
                     <li><a href="#">Projects</a></li>
                 </ul>
             </div>
-            <div>
+            <div className='hidden sm:block'>
                 <h2 className='font-bold text-sm mb-2'>COMPANY</h2>
                 <ul className='text-xs text-[#64748B] gap-2 flex flex-col'>
                     <li><a href="#">About</a></li>
@@ -31,7 +31,7 @@ const Footer = () => {
                     <li><a href="#">Careers</a></li>
                 </ul>
             </div>
-            <div>
+            <div className='hidden sm:block'>
                 <h2 className='font-bold text-sm mb-2'>LEGAL</h2>
                 <ul className='text-xs text-[#64748B] gap-2 flex flex-col'>
                     <li><a href="#">Privacy Policy</a></li>
